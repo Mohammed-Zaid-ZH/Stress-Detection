@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+      body{
+        height: 250%;
+      }
+      .nav-item a:hover {
+              background-color: rgb(5, 0, 0);
+          }
+          .navb-item .toggle {
+              display: none;
+              font-size: 1.5em;
+              color: white;
+              cursor: pointer;
+          }
+      .video-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+      }
+      .background-video {
+        width: 100%; 
+        height: auto;
+        max-width: 100%; 
+      }
+  .fs-4{
+    font-size:10rem;
+    color:white;
+  }
+  .nav-pills .nav-link {
+    font-size: 1.5rem; 
+    padding: 10px 15px; 
+    color:white !important;
+    text-decoration: none;
+  }
+  .sidebar {
+              height: 40%;
+              width: 0;
+              position: fixed;
+              top: 0;
+              left: 0;
+              background-color: transparent;
+              overflow-x: hidden;
+              transition: 0.3s;
+              padding-top: 60px;
+          }
+          .sidebar a {
+              padding: 10px 15px;
+              text-decoration: none;
+              font-size: 20px;
+              color: white;
+              display: block;
+              transition: 0.3s;
+          }
+          .sidebar a:hover {
+              background-color: #000000;
+          }
+          .closebtn {
+              position: absolute;
+              top: 10px;
+              right: 15px;
+              font-size: 30px;
+              cursor: pointer;
+          }
+          .openbtn {
+              font-size: 25px;
+              cursor: pointer;
+              background-color: #111;
+              color: white;
+              border: none;
+              padding: 10px 15px;
+              position: absolute;
+              right: 10px;
+          }
+           .card {
+            
+            background-size: cover; /* Ensures the image covers the whole card */
+            background-position: center; /* Centers the image inside the card */
+            height: 200%; /* Adjust this to increase the height of the card */
+            width: 100%; /* Ensures the card takes the full width of the column */
+            object-fit: cover; /* Ensures the content fits properly */
+            padding: 10px; /* Adjust this to increase the internal space */
+            box-sizing: border-box; /* Ensures padding is included in the card size */
+          }
+          footer {
+          color: #fff;
+          text-align: center;
+          padding: 10px 0px;
+          background-color: rgba(0, 0, 0, 0.7);
+          width: 100%;
+          font-family: 'Comic Sans MS', cursive;
+          margin-top: auto;
+          position: relative;
+          }
+            .footer-content ul.socials li {
+                display: inline;
+                margin: 0 10px;
+            }
+            .footer-content ul.socials li a {
+                color: #fff;
+                text-decoration: none;
+            }
+            .footer-content ul.socials li a:hover {
+                color: #4CAF50; 
+            }
+            * { box-sizing: border-box; }
+            
+            @keyframes fade {
+                from { opacity: .4 }
+                to { opacity: 1 }
+            }
+            @media (min-width: 768px) {
+                    .sidebar, .openbtn {
+                        display: none;
+                    }
+                }
+                @media (max-width: 1024px) {
+      .card-cover {
+          height: 900px;
+          width: 200px;
+          padding: 4px; 
+      }
+  }
+                @media (max-width: 768px) {
+                    .nav-item{
+                      display:none;
+                    }
+                    .card {
+                    background-size: cover; /* Ensures the image covers the whole card */
+                    background-position: center; /* Centers the image inside the card */
+                    object-fit: cover; /* Ensures the content fits properly */
+                    height: 100%; /* Adjust this to increase the height of the card */
+                    width: 35%; /* Ensures the card takes the full width of the column */
+                    padding: 5px;
+                    box-sizing: border-box;
+                    justify-content: center;
+                    text-align: end;
+                    position: relative;
+                  }
+                }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="5" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <img src="{{ url_for('static',filename= 'logo-Photoroom.png')}}" alt="Logo" style="width: 70px; height: 70px;">
+        <span class="fs-4"><h1>MoodMirror</h1></span>
+      </a>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{{ url_for('image_page') }}" class="nav-link">Images</a></li>
+        <li class="nav-item"><a href="{{ url_for('page_a') }}" class="nav-link">About</a></li>
+      </ul>
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+        <a href="{{ url_for('image_page') }}" class="nav-link">Images</a>
+        <a href="{{ url_for('page_a') }}" class="nav-link">About</a>
+    </div>
+      <div id="main">
+        <button class="openbtn" onclick="openNav()">☰</button>
+    </header>
+  </div>
+  <script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "200px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+    }
+</script>
+  </div>
+    <div class="video-container">
+      <video autoplay muted loop class="background-video">
+        <source src="{{ url_for('static',filename= 'Turquoise Clean Summer Holiday Destinations Video.mp4')}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    <script>
+      const v=document.getElementById("background-video");
+      const max=5;
+      let lc=0;
+      v.addEventListener('ended', () => {
+        lc++;
+        if (lc < max) {
+          v.currentTime = 0;
+          v.play(); 
+        } else {
+          console.log('Video finished after ' + maxLoops + ' loops');
+        }
+      });
+  </script>
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Mood cards</h2>
+
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-0"  style=" width: 110%; height: 425px;">
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='happppppppppp.jpg') }}');">
+
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="d-flex align-items-center me-3">
+                  <h2>Happy</h2>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='sad.jpg') }}');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="d-flex align-items-center me-3">
+                  <h2>Sad</h2>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='anger.jpg') }}');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="d-flex align-items-center me-3">
+                  <h2>Anger</h2>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container px-4 py-5" id="custom-cards">
+  
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-0"  style=" width: 110%; height: 425px; padding: 0px;">
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='surprise.jpg') }}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="d-flex align-items-center me-3">
+                    <h2>Surprise</h2>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='fear.jpg') }}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="d-flex align-items-center me-3">
+                    <h2>Fear</h2>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('{{ url_for('static', filename='disgust.jpg') }}');">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="d-flex align-items-center me-3">
+                    <h2>Disgust</h2>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <div>
+    <footer>
+        <div class="footer-content">
+            <h3>&copy; 2024 MoodMirror. All rights reserved.</h3>
+            <ul class="socials">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+      </footer>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MoodMirror</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        
+        .fs-4{
+            color:white;
+        }
+        .nav-item a:hover {
+            background-color: black;
+        }
+        .nav-pills .nav-link {
+            font-size: 1.5rem; 
+            padding: 10px 15px; 
+            color:white;
+        }
+        body{
+            background: linear-gradient(to right, #bcffc3, #37d3fe);
+            background-size: 180% 180%;
+            animation: gradient-animation 3s ease-in-out infinite;
+        }
+        @keyframes gradient-animation{
+        0% {
+            background-position: 0% 70%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 60%;
+        }
+        }
+        h2{
+            text-align:center;
+            font-size: 80px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-transform:uppercase;
+            font-weight:bolder;
+        }
+        .intro{
+            text-align:justify;
+            text-justify: inter-word;
+            margin-top: 2%;
+            text-align:justify;
+            text-justify: inter-word;
+            margin: 150px;
+        }
+        #img1{
+            float:left;
+            width:400px;
+            height:280px;
+            border:5px solid white;
+            margin-right:20px;
+        }
+        .text{
+            font-family: "Gill Sans", sans-serif;
+            font-size:22px;
+            font-weight:600;
+            color:#2b2a2c;
+            margin-top: 2%;
+            text-align:justify;
+            text-justify: inter-word;
+            margin-left: -2%;
+        }
+        .text1{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:22px;
+            font-weight:600;
+            color:#2b2a2c;
+            margin-top: 2%;
+            text-align:justify;
+            text-justify: inter-word;
+        }
+        #img2{
+            float:right;
+            width:400px;
+            height:280px;
+            border:5px solid white;
+           margin-right:20px;
+           margin-left:20px;
+        }
+        footer {
+            color: #fff;
+            text-align: center;
+            padding:10px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            top:0%;
+            bottom: 100%;
+            font-family: 'Comic Sans MS', cursive;
+        }
+        .footer-content ul.socials li {
+            display: inline;
+            margin: 0 10px;
+        }
+        .footer-content ul.socials li a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-content ul.socials li a:hover {
+            color: #4CAF50; 
+        }
+        .navbar .toggle {
+            display: none;
+            font-size: 1.5em;
+            color: white;
+            cursor: pointer;
+        }
+        .sidebar {
+            height: 40%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #000000;
+        }
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .openbtn {
+            font-size: 25px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            position: absolute;
+            right: 10px;
+        }
+        @keyframes fade {
+        from { opacity: .4 }
+        to { opacity: 1 }
+    }
+    @media (min-width: 768px) {
+                  .sidebar, .openbtn {
+                      display: none;
+                  }
+}
+              @media (max-width: 768px) {
+                  .nav-item{
+                    display:none;
+                  }
+              }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <svg class="bi me-2" width="5" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    <img src="{{ url_for('static',filename= 'logo-Photoroom.png')}}" alt="Logo" style="width: 60px; height: 60px;">
+                    <span class="fs-4"><h1>MoodMirror</h1></span>
+                </a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="{{ url_for('image_page') }}" class="nav-link">Images</a></li>
+                </ul>
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+                    <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('image_page') }}" class="nav-link">Images</a>
+                </div>
+                  <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </header>
+              </div>
+              <script>
+                function openNav() {
+                    document.getElementById("mySidebar").style.width = "200px";
+                }
+            
+                function closeNav() {
+                    document.getElementById("mySidebar").style.width = "0";
+                }
+            </script>
+            <script>
+                document.getElementById('navbarToggle').addEventListener('click', function() {
+                    var menu = document.getElementById('navbarMenu');
+                    menu.classList.toggle('active');
+                });
+            </script>
+            <script>
+                window.addEventListener('scroll', function() {
+                    var navbar = document.querySelector('.navbar');
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            </script>
+        </div>
+        <h2> Stay Stress Free <svg xmlns="http://www.w3.org/2000/svg" width="64" height="160" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 20 20">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M12.331 9.5a1 1 0 0 1 0 1A5 5 0 0 1 8 13a5 5 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5M7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5"/>
+        </svg></h2>
+        <div class="intro ">
+            <img src="{{ url_for('static',filename= 'happy1.jpeg.jpg')}}"  id="img1" alt="stress level">
+            <p class="text">We are a passionate team of AI enthusiast dedicated to leveraging the power of artificial intelligence to promote mental well-being. 
+                Our goal is to create technological solutions that empower individuals and organizations to better manage stress, improve productivity, and foster mental resilience.
+                In an increasingly fast-paced world where stress levels are on the rise, we believe that technology has the potential to revolutionize how we understand, detect, and manage mental health issues, particularly stress.</p>
+        </div>
+        <div class="part container">
+            <p class="text1">Stress is a natural human response to challenges. It has become a widespread issue impacting both
+                mental and physical health. Prolonged stress can lead to conditions like anxiety, depression,
+                cardiovascular diseases, and weak immune system. In fast-paced workplaces, high stress often
+                arises from demanding workloads and tight deadlines. Chronic patients require constant stress
+                monitoring to prevent health deterioration and improve treatment outcomes. Traditional stress
+                assessment methods, like self-reporting and invasive monitoring, are subjective and impractical
+                for continuous use, highlighting the need for automated, non-invasive stress detection systems.
+            </p>
+        </div>
+        <div class="container intro">
+            <img src="{{ url_for('static',filename= 'stress level.jpeg.jpg')}}"  id="img2" alt="sad to happy">
+            <p class="text">To tackle this, our system provides an advanced stress detection interface where the
+                system will analyse user's facial expressions to identify stress levels using deep learning models.
+                This functionality is facilitated through non-intrusive methods such as cameras to monitor visual cues and the system captures real-time data without physical contact, 
+                ensuring a seamless experience. Utilizing techniques like CNNs and WMDNNs, our approach focuses on accurately detecting stress through facial analysis, 
+                providing valuable insights into mental well-being.
+            </p>
+        </div>
+        <div class="part container">
+        <p class="text1">
+            At the core of our efforts is the belief that mental resilience—the ability to bounce back from challenges and maintain psychological strength in the face of stress—can be cultivated with the right tools and strategies.
+             Our AI-driven stress detection systems are designed to support this process by providing users with real-time feedback on their stress levels and offering guidance on how to cope. 
+             By using these tools, individuals can build the emotional intelligence and resilience needed to navigate life's challenges with greater ease.
+        </p></div>
+    </div>
+    <div>
+        <footer>
+            <div class="footer-content">
+                <h3>&copy; 2024 MoodMirror. All rights reserved.</h3>
+                <ul class="socials">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+          </footer>
+    </div>
+</body>
+</html>
